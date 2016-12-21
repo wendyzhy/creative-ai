@@ -1,0 +1,22 @@
+# Plans for Creative AI
+
+## Remove Cruft
+
+* Properly stub with 'pass'
+* doctests where possible
+* Cut RME's down
+* Eliminate extras
+
+## Reach revamps
+
+### Model Reaches
+
+1. Lyrics Generation (nltk)
+2. Music Generation (Pentatonic scale with backbeat)
+
+### Visual Reaches
+
+1. Data visualization (matplotlib)
+2. Song visualization (???)
+
+## Corresponding doc rewrite (github)
