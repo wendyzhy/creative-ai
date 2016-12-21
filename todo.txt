@@ -2,9 +2,9 @@
 
 ## Remove Cruft
 
-* Properly stub with 'pass'
-* doctests where possible
-* Cut RME's down
+* Properly stub with 'pass' (done)
+* doctests where possible (done)
+* Cut RME's down (done)
 * Eliminate extras
 
 ## Reach revamps
@@ -20,3 +20,8 @@
 2. Song visualization (???)
 
 ## Corresponding doc rewrite (github)
+
+## Warmup Rewrite
+
+* Use doctests (done)
+* Test (not done)
