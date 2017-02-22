@@ -10,16 +10,15 @@ def loadLyrics(dirName):
     cleans that line by removing punctuation and extraneous
     whitespaces, and lowercasing all words in the line.
     """
-    scriptDir = os.path.dirname(os.path.abspath(__file__))
-    musicDir = os.path.join(scriptDir, "lyrics/")
+    lyricsDir = os.path.dirname(os.path.abspath(__file__)) + "/lyrics/"
+    artistDir = os.path.join(lyricsDir, dirName) + "/"
 
-    if os.path.isdir(musicDir):
-        print "No artist named", musicDir, "in directory", midiDir
+    if not os.path.isdir(artistDir):
+        print "No artist named", artistDir, "in directory", lyricsDir
         return None
 
     lyrics = []
 
-    artistDir = musicDir + dirName + "/"
     songs = os.listdir(artistDir)
     for song in songs:
         with open(artistDir + song, 'r') as songFile:
@@ -30,7 +29,7 @@ def loadLyrics(dirName):
             line = line.translate(None, string.punctuation)
             line = line.lower().strip()
             if line:
-                lyrics.append(line)
+                lyrics.append(line.split())
     return lyrics
 
 def loadMusic(dirName):
@@ -40,9 +39,9 @@ def loadMusic(dirName):
     data into PySynth tuple format.
     """
     midiDir = os.path.dirname(os.path.abspath(__file__)) + "/midi/"
-    platformDir = os.path.join(midiDir, dirName)
+    platformDir = os.path.join(midiDir, dirName) + "/"
 
-    if os.path.isdir(platformDir):
+    if not os.path.isdir(platformDir):
         print "No platform named", platformDir, "in directory", midiDir
         return None
 

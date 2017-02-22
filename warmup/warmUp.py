@@ -19,9 +19,9 @@ def returnDictionary(D):
     Effects:  Returns the input dictionary D unchanged.
     >>> returnDictionary({})
     {}
-    >>> coleridge = { 'in': 'xanadu', 'did': 'kubla khan' }
-    >>> returnDictionary(coleridge)
-    { 'in': 'xanadu', 'did': 'kubla khan' }
+    >>> coleridge = {'in': 'xanadu', 'did': 'kubla khan'}
+    >>> returnDictionary(coleridge) == {'in': 'xanadu', 'did': 'kubla khan'}
+    True
     """
     pass
 
@@ -32,8 +32,8 @@ def keyInDict(D, K):
     Effects:  Returns True if and only if the key K is already in D.
     >>> keyInDict({}, 'xanadu')
     False
-    >>> coleridge = { 'in': 'xanadu', 'did': 'kubla khan' }
-    >>> keyInDict(coleridge, 'xanadu')
+    >>> coleridge = {'in': 'xanadu', 'did': 'kubla khan'}
+    >>> keyInDict(coleridge, 'in')
     True
     >>> keyInDict(coleridge, 'decree')
     False
@@ -45,7 +45,7 @@ def returnKeyVal(D, K):
     Requires: D is a dictionary and K is a key in D
     Modifies: Nothing
     Effects:  Returns the value associated with K in the dictionary D.
-    >>> coleridge = { 'a': 'stately', 'pleasure': 'dome', 'decree': {} }
+    >>> coleridge = {'a': 'stately', 'pleasure': 'dome', 'decree': {}}
     >>> returnKeyVal(coleridge, 'a')
     'stately'
     >>> returnKeyVal(coleridge, 'decree')
@@ -59,10 +59,10 @@ def setKeyVal(D, K, V):
     Modifies: D
     Effects:  Sets the value associated with the key K in the dictionary D
               to be the value V. Returns the dictionary D.
-    >>> setKeyVal({}, 'where alph', 'the sacred river ran')
-    { 'where alph': 'the sacred river ran' }
-    >>> setKeyVal({ 'through': 'caverns' }, 'measureless', 'to man')
-    { 'through': 'caverns', 'measureless': 'to man' }
+    >>> setKeyVal({}, 'where alph', 'the sacred river ran') == {'where alph': 'the sacred river ran'}
+    True
+    >>> setKeyVal({'through': 'caverns'}, 'measureless', 'to man') == {'through': 'caverns', 'measureless': 'to man'}
+    True
     """
     pass
 
@@ -73,8 +73,8 @@ def setKeyValList(D, K, V1, V2, V3, V4):
     Effects:  Sets the value associated with the key K, which is a key in
               the input dictionary D, to be a list composed of V1 through
               V4, in that order. Returns the dictionary D.
-    >>> setKeyValList({}, 'down', 'to', 'a', 'sunless', 'sea')
-    { 'down': ['to', 'a', 'sunless', 'sea'] }
+    >>> setKeyValList({}, 'down', 'to', 'a', 'sunless', 'sea') == {'down': ['to', 'a', 'sunless', 'sea']}
+    True
     """
     pass
 
@@ -86,21 +86,22 @@ def asciiAssociate():
               the lowercase characters from a to z, and whose values are
               the associated ascii values from 97 to 122. Returns the
               dictionary asciiDict.
-    >>> asciiAssociate()
-    { 'a': 97, 'b': 98, 'c': 99, 'd': 100, 'e': 101, 'f': 102, 'g': 103, 'h': 104, 'i': 105, 'j': 106, 'k': 107, 'l': 108, 'm': 109, 'n': 110, 'o': 111, 'p': 112, 'q': 113, 'r': 114, 's': 115, 't': 116, 'u': 117, 'v': 118, 'w': 119, 'x': 120, 'y': 121, 'z': 122'a': 97, 'b': 98, 'c': 99, 'd': 100, 'e': 101, 'f': 102, 'g': 103, 'h': 104, 'i': 105, 'j': 106, 'k': 107, 'l': 108, 'm': 109, 'n': 110, 'o': 111, 'p': 112, 'q': 113, 'r': 114, 's': 115, 't': 116, 'u': 117, 'v': 118, 'w': 119, 'x': 120, 'y': 121, 'z': 122 }
+    >>> asciiAssociate() == {'a': 97, 'b': 98, 'c': 99, 'd': 100, 'e': 101, 'f': 102, 'g': 103, 'h': 104, 'i': 105, 'j': 106, 'k': 107, 'l': 108, 'm': 109, 'n': 110, 'o': 111, 'p': 112, 'q': 113, 'r': 114, 's': 115, 't': 116, 'u': 117, 'v': 118, 'w': 119, 'x': 120, 'y': 121, 'z': 122}
+    True
     """
     pass
 
 def getColor(favoriteColors, name):
     """
-    Requires: favoriteColors is a dictionary and name is a key in
-              favoriteColors
+    Requires: favoriteColors is a dictionary, name is a key in
+              favoriteColors, and the value associated with name is a non-empty
+              list
     Modifies: Nothing
     Effects:  Returns the first element in the list associated with the
               key "name" in the input dictionary favoriteColors.
-    >>> getColor({ 'Kubla': ['gold', 'silver'] }, 'Kubla')
+    >>> getColor({'Kubla': ['gold', 'silver']}, 'Kubla')
     'gold'
-    >>> getColor({ 'Coleridge': ['green'] }, 'Coleridge')
+    >>> getColor({'Coleridge': ['green']}, 'Coleridge')
     'green'
     """
     pass
@@ -111,12 +112,12 @@ def translate(vocab, word, language):
               and language is a key in the dictionary that word maps to
     Modifies: Nothing
     Effects:  The input dictionary, vocab, could look something like this:
-              { "hello": { "Spanish" : "hola", "French": "bonjour" } }
+              {"hello": {"Spanish" : "hola", "French": "bonjour"}}
               Given the input dictionary, this function returns the
               value associated with the input word and language.
-    >>> translate({ 'river': { 'Spanish': 'rio', 'French': 'riviere'} }, 'river', 'Spanish')
+    >>> translate({'river': {'Spanish': 'rio', 'French': 'riviere'}}, 'river', 'Spanish')
     'rio'
-    >>> translate({ 'river': { 'Spanish': 'rio', 'French': 'riviere'} }, 'river', 'French')
+    >>> translate({'river': {'Spanish': 'rio', 'French': 'riviere'}}, 'river', 'French')
     'riviere'
     """
     pass
@@ -128,8 +129,8 @@ def nestedDictionary():
     Effects:  Creates a new dictionary, D, where its keys are the
               lowercase characters from a to z, and each key has a value
               of an empty dictionary. Returns the new dictionary D.
-    >>> nestedDictionary()
-    { 'a': {}, 'b': {}, 'c': {}, 'd': {}, 'e': {}, 'f': {}, 'g': {}, 'h': {}, 'i': {}, 'j': {}, 'k': {}, 'l': {}, 'm': {}, 'n': {}, 'o': {}, 'p': {}, 'q': {}, 'r': {}, 's': {}, 't': {}, 'u': {}, 'v': {}, 'w': {}, 'x': {}, 'y': {}, 'z': {} }
+    >>> nestedDictionary() == {'a': {}, 'b': {}, 'c': {}, 'd': {}, 'e': {}, 'f': {}, 'g': {}, 'h': {}, 'i': {}, 'j': {}, 'k': {}, 'l': {}, 'm': {}, 'n': {}, 'o': {}, 'p': {}, 'q': {}, 'r': {}, 's': {}, 't': {}, 'u': {}, 'v': {}, 'w': {}, 'x': {}, 'y': {}, 'z': {}}
+    True
     """
     pass
 
@@ -141,10 +142,10 @@ def nestedDictionary3D(L1, L2):
               The value for each key in D is a dictionary, which
               has keys of each item of list L2 and corresponding
               values of empty dictionaries. Returns the new dictionary D.
-    >>> nestedDictionary3D(['coleridge'], ['kubla khan', 'christabel'])
-    { 'coleridge': { 'kubla khan': {}, 'christabel': {} } }
-    >>> nestedDictionary3D(['dolphin', 'panda'], ['diet', 'habitat'])
-    { 'dolphin': { 'diet': {}, 'habitat': {} }, 'panda': { 'diet': {}, 'habitat': {} } }
+    >>> nestedDictionary3D(['coleridge'], ['kubla khan', 'christabel']) == {'coleridge': {'kubla khan': {}, 'christabel': {}}}
+    True
+    >>> nestedDictionary3D(['dolphin', 'panda'], ['diet', 'habitat']) == {'dolphin': {'diet': {}, 'habitat': {}}, 'panda': {'diet': {}, 'habitat': {}}}
+    True
     """
     pass
 
@@ -157,7 +158,7 @@ def valueFrom3D(D, K1, K2, K3):
     Effects:  Given the 3D input dictionary D, returns the value associated
               with the innermost dictionary accessed using keys K1, K2, and K3,
               in that order.
-    >>> valueFrom3D({ 'singing': { 'of': { 'mount': 'abora' } } }, 'singing', 'of', 'mount')
+    >>> valueFrom3D({'singing': {'of': {'mount': 'abora'}}}, 'singing', 'of', 'mount')
     'abora'
     """
     pass
