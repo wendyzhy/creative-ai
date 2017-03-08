@@ -6,9 +6,9 @@ sys.dont_write_bytecode = True
 import random
 from data.dataLoader import *
 from data.musicData import *
-from language_models.unigramModel import *
-from language_models.bigramModel import *
-from language_models.trigramModel import *
+from models.unigramModel import *
+from models.bigramModel import *
+from models.trigramModel import *
 
 ###############################################################################
 # Helpers
@@ -55,13 +55,11 @@ def trainModels(dataDirectory):
 
               Returns the list of trained models.
     """
-    dataLoader = DataLoader()
-    # lyrics stored in dataLoader.lyrics
-    # dataLoader.loadLyrics(lyricsDirectory)
-    # music stored in dataLoader.songs
-    # dataLoader.loadMusic(musicDirectory)
     models = [TrigramModel(), BigramModel(), UnigramModel()]
-
+    for lyricdir in LYRICSDIRS:
+        lyrics = dataLoader.loadLyrics(lyricdir)
+        for model in models:
+            model.trainModel(lyrics)
     return models
 
 def selectNGramModel(models, sentence):
