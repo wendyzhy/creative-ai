@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys
-sys.dont_write_bytecode = True
+sys.dont_write_bytecode = True # Suppress .pyc files
 
 import random
 from data.dataLoader import *
@@ -9,6 +9,11 @@ from data.musicData import *
 from models.unigramModel import *
 from models.bigramModel import *
 from models.trigramModel import *
+
+TEAM = '[YOUR NAME HERE]'
+LYRICSDIRS = ['the_beatles']
+MUSICDIRS = ['gamecube']
+WAVDIR = 'wav/'
 
 ###############################################################################
 # Helpers
@@ -39,11 +44,7 @@ def printSongLyrics(verseOne, verseTwo, chorus):
             print (' '.join(line)).capitalize()
         print
 
-###############################################################################
-# Core
-###############################################################################
-
-def trainModels(dataDirectory):
+def trainLyricModels(dataDirectory):
     """
     Requires: nothing
     Modifies: nothing
@@ -61,6 +62,10 @@ def trainModels(dataDirectory):
         for model in models:
             model.trainModel(lyrics)
     return models
+
+###############################################################################
+# Core
+###############################################################################
 
 def selectNGramModel(models, sentence):
     """
@@ -90,7 +95,7 @@ def generateSentence(models, desiredLength):
     sentence = ['^::^', '^:::^']
     pass
 
-def runGenerator(models):
+def generateSong(models):
     """
     Requires: models is a list of a trained models
     Modifies: nothing
@@ -107,10 +112,6 @@ PROMPT = """
 (2) Generate a song using data from Nintendo Gamecube
 (3) Quit the music generator
 > """
-TEAM = '[NAME HERE]'
-LYRICSDIRS = ['the_beatles']
-MUSICDIRS = ['gamecube']
-WAVDIR = 'wav/'
 
 def main():
     """
@@ -128,7 +129,7 @@ def main():
     # musicModels = trainMusicModels(musicDirectory)
     # print 'Data successfully loaded\n'
 
-    print 'Welcome to the ', TEAM, ' music generator!'
+    print('Welcome to the ' + TEAM + ' music generator!')
     while True:
         try:
             userInput = int(raw_input(PROMPT))
@@ -140,7 +141,7 @@ def main():
                 # songName = raw_input('What would you like to name your song? ')
                 # runMusicGenerator(musicModels, WAVDIR + songName + '.wav')
             elif userInput == 3:
-                print 'Thank you for using the ', TEAM, ' music generator!'
+                print('Thank you for using the ' + TEAM + ' music generator!')
                 sys.exit()
             else:
                 print("Invalid option!")

@@ -10,6 +10,14 @@ Welcome to the repository! If you have questions, please check here:
 
 - <a href="https://github.com/eecs183/creative-ai/wiki" target="_blank">Link to specification</a>
 
-Remember to update this file to describe your Final Project.
+Here are a few notes to get you started:
+
+* Don't touch the __init__.py files. These are necessary to your project.
+
+* Things will be easier if you read the spec first and follow the given function order.
+
+* Make sure you have ```pip``` installed so you download pysynth.
+
+* Remember to update this file to describe your finished Final Project.
 
 Good luck!

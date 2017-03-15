@@ -3,9 +3,10 @@
 # cases for these functions as part of the core. To run your functions with our
 # test cases, run this file as main. This file uses python's doctest module,
 # which will run your implementations against the test cases contained in each
-# function.
+# function. Do NOT change any of the comments in this file or we will NOT be
+# able to grade your project.
 
-# Turn off bytecode
+# Turn off bytecode .pyc files
 import sys
 sys.dont_write_bytecode = True
 
