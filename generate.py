@@ -5,7 +5,7 @@ sys.dont_write_bytecode = True # Suppress .pyc files
 
 import random
 from data.dataLoader import *
-from data.musicData import *
+from models.musicModel import *
 from models.unigramModel import *
 from models.bigramModel import *
 from models.trigramModel import *

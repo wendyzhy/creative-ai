@@ -1,6 +1,6 @@
 import random
 import sys
-from data.musicData import *
+from musicModel import *
 
 class NGramModel(object):
 
