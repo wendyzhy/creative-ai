@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import sys
 sys.dont_write_bytecode = True # Suppress .pyc files
 
@@ -10,13 +9,14 @@ from models.unigramModel import *
 from models.bigramModel import *
 from models.trigramModel import *
 
-TEAM = '[YOUR NAME HERE]'
+# FIXME Add your team name
+TEAM = 'YOUR NAME HERE'
 LYRICSDIRS = ['the_beatles']
 MUSICDIRS = ['gamecube']
 WAVDIR = 'wav/'
 
 ###############################################################################
-# Helpers
+# Helper Functions
 ###############################################################################
 
 def sentenceTooLong(desiredLength, currentLength):
@@ -44,11 +44,11 @@ def printSongLyrics(verseOne, verseTwo, chorus):
             print (' '.join(line)).capitalize()
         print
 
-def trainLyricModels(dataDirectory):
+def trainLyricModels(lyricDirs):
     """
-    Requires: nothing
+    Requires: lyricDirs is a list of directories in data/lyrics/
     Modifies: nothing
-    Effects:  loads data from the data/lyrics/<lyricsDirectory> folder
+    Effects:  loads data from the folders in the lyricDirs list,
               using the pre-written DataLoader class, then creates an
               instance of each of the NGramModel child classes and trains
               them using the text loaded from the data loader. The list
@@ -57,8 +57,8 @@ def trainLyricModels(dataDirectory):
               Returns the list of trained models.
     """
     models = [TrigramModel(), BigramModel(), UnigramModel()]
-    for lyricdir in LYRICSDIRS:
-        lyrics = dataLoader.loadLyrics(lyricdir)
+    for ldir in lyricDirs:
+        lyrics = dataLoader.loadLyrics(ldir)
         for model in models:
             model.trainModel(lyrics)
     return models
@@ -66,6 +66,22 @@ def trainLyricModels(dataDirectory):
 ###############################################################################
 # Core
 ###############################################################################
+
+def trainMusicModels(musicDirs):
+    """
+    Requires: lyricDirs is a list of directories in data/midi/
+    Modifies: nothing
+
+    Effects:  works exactly as trainLyricsModels, except that
+              now the dataLoader calls the DataLoader's loadMusic() function
+              and takes a music directory name instead of an artist name.
+              Returns a list of trained models in order of tri-, then bi-, then
+              unigramModel objects.
+    """
+    models = [TrigramModel(), BigramModel(), UnigramModel()]
+    # call dataLoader.loadMusic for each directory in musicDirs
+
+    pass
 
 def selectNGramModel(models, sentence):
     """
@@ -79,7 +95,7 @@ def selectNGramModel(models, sentence):
     """
     pass
 
-def generateSentence(models, desiredLength):
+def generateLyricalSentence(models, desiredLength):
     """
     Requires: models is a list of trained NGramModel objects sorted by
               descending priority: tri-, then bi-, then unigrams.
@@ -95,11 +111,35 @@ def generateSentence(models, desiredLength):
     sentence = ['^::^', '^:::^']
     pass
 
-def generateSong(models):
+def generateMusicalSentence(models, desiredLength, possiblePitches):
     """
-    Requires: models is a list of a trained models
+    Requires: possiblePitches is a list of pitches for a musical key
     Modifies: nothing
-    Effects:  generates a song using models
+    Effects:  works exactly like generateLyricalSentence from the core, except
+              now we call the NGramModel child class' getNextNote()
+              function instead of getNextToken(). Everything else
+              should be exactly the same as the core.
+    """
+    sentence = ['^::^', '^:::^']
+    pass
+
+def runLyricsGenerator(models):
+    """
+    Requires: models is a list of a trained nGramModel child class objects
+    Modifies: nothing
+    Effects:  generates a verse one, a verse two, and a chorus, then
+              calls printSongLyrics to print the song out.
+    """
+    verseOne = []
+    verseTwo = []
+    chorus = []
+    pass
+
+def runMusicGenerator(models, songName):
+    """
+    Requires: models is a list of trained models
+    Modifies: nothing
+    Effects:  runs the music generator as following the details in the spec.
     """
     pass
 
@@ -122,24 +162,25 @@ def main():
 
               It prompts the user to choose to generate either lyrics or music.
     """
-
-    # TODO only load when requested
-    # print 'Starting program and loading data...'
-    # lyricsModels = trainLyricsModels(lyricsDirectory)
-    # musicModels = trainMusicModels(musicDirectory)
-    # print 'Data successfully loaded\n'
+    # FIXME uncomment these lines when ready
+    # print('Starting program and loading data...')
+    # lyricsModels = trainLyricsModels(LYRICSDIRS)
+    # musicModels = trainMusicModels(MUSICDIRS)
+    # print('Data successfully loaded')
 
     print('Welcome to the ' + TEAM + ' music generator!')
     while True:
         try:
             userInput = int(raw_input(PROMPT))
             if userInput == 1:
+                # FIXME uncomment this line when ready
                 # runLyricsGenerator(lyricsModels)
                 print("Under construction")
             elif userInput == 2:
-                print("Under construction")
+                # FIXME uncomment these lines when ready
                 # songName = raw_input('What would you like to name your song? ')
                 # runMusicGenerator(musicModels, WAVDIR + songName + '.wav')
+                print("Under construction")
             elif userInput == 3:
                 print('Thank you for using the ' + TEAM + ' music generator!')
                 sys.exit()
