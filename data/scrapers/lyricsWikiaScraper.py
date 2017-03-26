@@ -146,7 +146,7 @@ class LyricsWikiaScraper(BaseScraper):
         title = re.sub("/", "_", title)
         for encoding in URL_ENCODINGS:
             title = re.sub(encoding, URL_ENCODINGS[encoding], title)
-        lyricsFileName = (dirName + "/" + title + ".txt").lower()
+        lyricsFileName = (dirName + "/" + title + ".txt")
         lyricsFile = codecs.open(lyricsFileName, "w", "utf-8", errors = "ignore")
         lyricsFile.write(lyrics)
 
