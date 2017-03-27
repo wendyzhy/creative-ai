@@ -20,4 +20,4 @@ Here are a few notes to get you started:
 
 * Remember to update this file to describe your finished Final Project.
 
-Good luck!
+Have fun on the project!
