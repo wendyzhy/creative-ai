@@ -3,6 +3,7 @@ import sys
 sys.dont_write_bytecode = True # Suppress .pyc files
 
 import random
+from pysynth import pysynth
 from data.dataLoader import *
 from models.musicInfo import *
 from models.unigramModel import *
