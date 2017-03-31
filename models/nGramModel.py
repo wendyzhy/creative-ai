@@ -49,7 +49,7 @@ class NGramModel(object):
                   override it in the NGramModel child classes according
                   to the spec.
         """
-        pass
+        
 
     def trainingDataHasNGram(self, sentence):
         """
@@ -62,8 +62,10 @@ class NGramModel(object):
                   you will override it in NGramModel child classes according
                   to the spec.
         """
-        pass
-
+        if self.nGramCounts != {}:
+            return true
+        else:
+            return false
     def getCandidateDictionary(self, sentence):
         """
         Requires: sentence is a list of strings
@@ -73,8 +75,7 @@ class NGramModel(object):
                   modified because you will override it in the NGramModel child
                   classes according to the spec.
         """
-        pass
-
+        return self.nGramCounts
     def weightedChoice(self, candidates):
         """
         Requires: candidates is a dictionary; the keys of candidates are items
@@ -95,7 +96,9 @@ class NGramModel(object):
                   For more information on how to put all these functions
                   together, see the spec.
         """
-        pass
+        getCandidateDictionary()
+        weightedChoice = getCandidateDictionary
+        return weightedChoice
 
     def getNextNote(self, musicalSentence, possiblePitches):
         """
